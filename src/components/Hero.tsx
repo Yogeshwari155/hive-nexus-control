@@ -32,7 +32,7 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button className="btn-primary group">
+              <Button className="btn-primary group" onClick={() => window.location.href = '/login'}>
                 Get Started Today
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
