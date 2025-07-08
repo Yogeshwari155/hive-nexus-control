@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Users, Wifi, Coffee } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-warm">
       {/* Animated Background Elements */}
@@ -32,12 +35,12 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button className="btn-primary group" onClick={() => window.location.href = '/login'}>
+              <Button className="btn-primary group" onClick={() => navigate('/login')}>
                 Get Started Today
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" className="btn-secondary">
-                Take a Virtual Tour
+              <Button variant="outline" className="btn-secondary" onClick={() => navigate('/login')}>
+                Join Now
               </Button>
             </div>
 
