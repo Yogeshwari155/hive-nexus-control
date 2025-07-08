@@ -2,39 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Nerdshive Design System - Bee & Honeycomb Inspired */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 30 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 30 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 30 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Bee-inspired primary colors */
+    --primary: 45 95% 50%;
+    --primary-foreground: 30 15% 15%;
+    --primary-glow: 45 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Honeycomb secondary */
+    --secondary: 40 85% 92%;
+    --secondary-foreground: 30 15% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted honey tones */
+    --muted: 40 20% 95%;
+    --muted-foreground: 30 15% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Amber accent */
+    --accent: 35 95% 60%;
+    --accent-foreground: 30 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 45 95% 50%;
+
+    /* Custom Nerdshive tokens */
+    --honey: 42 95% 65%;
+    --amber: 35 100% 55%;
+    --dark-amber: 30 60% 35%;
+    --cream: 45 50% 96%;
+    --warm-gray: 30 8% 45%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--honey)));
+    --gradient-warm: linear-gradient(180deg, hsl(var(--cream)), hsl(var(--secondary)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary-glow)), hsl(var(--amber)));
+
+    /* Shadows */
+    --shadow-warm: 0 10px 30px -10px hsl(var(--amber) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--warm-gray) / 0.15);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -101,5 +125,85 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Interactive Hover Effects */
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary-glow)/0.4)];
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_hsl(var(--amber)/0.3)];
+  }
+
+  .bee-float {
+    animation: bee-float 3s ease-in-out infinite;
+  }
+
+  .hexagon-pulse {
+    animation: hexagon-pulse 2s ease-in-out infinite;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-honey text-primary-foreground px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary-glow)/0.4)] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white/80 backdrop-blur-sm border border-amber-200 text-dark-amber px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-amber-50 hover:border-amber-300 hover:scale-105;
+  }
+
+  /* Card Effects */
+  .card-interactive {
+    @apply bg-white/90 backdrop-blur-sm border border-amber-100 rounded-2xl p-6 transition-all duration-300 hover:bg-white hover:border-amber-200 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_hsl(var(--amber)/0.2)];
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes bee-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+
+  @keyframes hexagon-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
   }
 }
